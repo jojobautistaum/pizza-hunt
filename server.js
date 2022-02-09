@@ -8,8 +8,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
-  useFindAndModify: false,
+// Connect to local MongoDB
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
+//   useFindAndModify: false,
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+
+// Connect to Heroku MongoDB Atlas
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/pizza-hunt', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
