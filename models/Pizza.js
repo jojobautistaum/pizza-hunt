@@ -12,7 +12,7 @@ const PizzaSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal)
+      get: createdAtVal => dateFormat(createdAtVal)
     },
     size: {
       type: String,
@@ -31,17 +31,16 @@ const PizzaSchema = new Schema(
       virtuals: true,
       getters: true
     },
+    // prevents virtuals from creating duplicate of _id as `id`
     id: false
   }
 );
-
-// create the Pizza model using the PizzaSchema
-const Pizza = model('Pizza', PizzaSchema);
 
 // get total count of comments and replies on retrieval
 PizzaSchema.virtual('commentCount').get(function() {
   return this.comments.length;
 });
 
-// export the Pizza model
+const Pizza = model('Pizza', PizzaSchema);
+
 module.exports = Pizza;
