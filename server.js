@@ -16,7 +16,7 @@ app.use(express.static('public'));
 // });
 
 // Connect to Heroku MongoDB Atlas
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/pizza-hunt', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/pizza_hunt_db', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
